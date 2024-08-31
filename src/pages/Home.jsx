@@ -20,6 +20,7 @@ const Home = () => {
       setIsLoading(!isLoading);
     } catch (error) {
       const errMsg = error.message || "something wents wrong.";
+      setError(errMsg);
       toast.error(errMsg);
       console.error("Error uploading image:", error);
       setIsLoading(!isLoading);
@@ -37,8 +38,14 @@ const Home = () => {
     <div>
       <Header />
       <div className="h-full">
+        {isLoading && !error && !diseaseResult && (
+          <div className="py-4 text-xl font-semibold text-center">
+            Loading...
+          </div>
+        )}
         {diseaseResult && (
           <DiseaseResult
+            error={error}
             uploadAgainHanlder={uploadAgainHandler}
             {...diseaseResult}
           />
