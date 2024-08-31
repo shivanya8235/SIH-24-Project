@@ -14,7 +14,7 @@ const ImageUploadForm = () => {
     <div className="flex flex-row justify-center p-1 items-center min-h-[80vh]">
       <div className="border border-slate-300 rounded-lg shadow-lg flex flex-col justify-center items-center w-fit md:py-6 md:px-4 p-2">
         <h2 className="font-bold text-2xl text-center p-2 md:p-4">
-          Submit Your Crop or Livestock Image
+          Submit Your Crop Image
         </h2>
         <form className="flex flex-col justify-center gap-4">
           <div className="flex flex-col">
