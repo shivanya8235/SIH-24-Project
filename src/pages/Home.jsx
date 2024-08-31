@@ -14,7 +14,8 @@ const Home = () => {
   const handleCropImageUpload = async formData => {
     setIsLoading(!isLoading);
     try {
-      const data = uploadCropImageService(formData);
+      const data = await uploadCropImageService(formData);
+      console.log(data);
       setDiseaseResult(data);
       setIsLoading(!isLoading);
     } catch (error) {
@@ -26,11 +27,26 @@ const Home = () => {
     }
   };
 
+  const uploadAgainHandler = () => {
+    setDiseaseResult(null);
+    setError(null);
+    setIsLoading(false);
+  };
+
   return (
     <div>
       <Header />
-      {diseaseResult && <DiseaseResult diseaseResult={diseaseResult} />}
-      <ImageUploadForm handleCropImageUpload={handleCropImageUpload} />
+      <div className="h-full">
+        {diseaseResult && (
+          <DiseaseResult
+            uploadAgainHanlder={uploadAgainHandler}
+            {...diseaseResult}
+          />
+        )}
+        {!diseaseResult && !isLoading && !error && (
+          <ImageUploadForm handleCropImageUpload={handleCropImageUpload} />
+        )}
+      </div>
       <Footer />
     </div>
   );

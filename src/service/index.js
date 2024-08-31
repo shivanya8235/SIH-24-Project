@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "";
+const BASEURL = "http://localhost:5000/CropDisease";
 
 export const uploadCropImageService = async formData => {
   try {
