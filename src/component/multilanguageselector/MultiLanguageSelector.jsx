@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const languages = [
-  "Hindi",
   "English",
+  "Hindi",
   "Bengali",
   "Bhojpuri",
   "Telugu",
