@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../component/header/Header";
+import Header from "../component/header/header";
 import ImageUploadForm from "../component/form/ImageUploadForm";
 import DiseaseResult from "../component/disease-result/DiseaseResult";
 import { uploadCropImageService } from "../service";
@@ -10,7 +10,7 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   //! Post image data to backend
-  const handleCropImageUpload = async formData => {
+  const handleCropImageUpload = async (formData) => {
     setIsLoading(!isLoading);
     try {
       const data = uploadCropImageService(formData);
