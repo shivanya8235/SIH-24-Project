@@ -2,19 +2,20 @@ import { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Navbar from "./component/navbar/Navbar";
 import Footer from "./component/footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <ChakraProvider>
         <Router>
           <div className="w-full min-h-screen">
-            <div>{/* <Toaster /> */}</div>
+            <div>
+              <Toaster />
+            </div>
             <Navbar />
             <Routes>
               <Route exact path="/" element={<Home />} />
