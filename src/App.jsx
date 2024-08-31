@@ -20,7 +20,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
       </ChakraProvider>

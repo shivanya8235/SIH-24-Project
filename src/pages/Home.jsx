@@ -4,6 +4,7 @@ import ImageUploadForm from "../component/form/ImageUploadForm";
 import DiseaseResult from "../component/disease-result/DiseaseResult";
 import { uploadCropImageService } from "../service";
 import toast from "react-hot-toast";
+import Footer from "../component/footer/Footer";
 const Home = () => {
   const [diseaseResult, setDiseaseResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +31,7 @@ const Home = () => {
       <Header />
       {diseaseResult && <DiseaseResult diseaseResult={diseaseResult} />}
       <ImageUploadForm handleCropImageUpload={handleCropImageUpload} />
+      <Footer />
     </div>
   );
 };
