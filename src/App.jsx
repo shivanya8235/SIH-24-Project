@@ -3,6 +3,8 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import Home from "./pages/home";
+import Navbar from "./component/navbar/Navbar";
+import Footer from "./component/footer/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,12 +13,14 @@ function App() {
     <>
       <ChakraProvider>
         <Router>
-          <div>{/* <Toaster /> */}</div>
-          {/* <Navbar /> */}
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-          </Routes>
-          {/* <Footer /> */}
+          <div className="w-full min-h-screen">
+            <div>{/* <Toaster /> */}</div>
+            <Navbar />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+            </Routes>
+            <Footer />
+          </div>
         </Router>
       </ChakraProvider>
     </>
