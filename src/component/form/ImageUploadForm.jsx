@@ -2,8 +2,10 @@ import React from "react";
 import { MdCancel } from "react-icons/md";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { BASEURL } from "../../service";
+import axios from "axios";
 
-const ImageUploadForm = ({ handleCropImageUpload }) => {
+const ImageUploadForm = ({ setLoading, setDiseaseResult, setError }) => {
   const [description, setDiscription] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [imageURL, setImageURL] = useState(null);
@@ -29,11 +31,34 @@ const ImageUploadForm = ({ handleCropImageUpload }) => {
   };
 
   const handleOnSubmit = async e => {
+    setLoading(true);
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", selectedFile);
     formData.append("description", description);
-    await handleCropImageUpload(formData);
+
+    try {
+      const response = await axios.post(BASEURL, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const data = response.data;
+      setDiseaseResult(data);
+      setLoading(false);
+      setDiseaseResult(data);
+      setImageURL(null);
+      setDiscription("");
+      setSelectedFile("");
+      setError(null);
+    } catch (error) {
+      const errMsg = error.message || "something wents wrong.";
+      setError(errMsg);
+      toast.error(errMsg);
+      console.error("Error uploading image:", error);
+      setLoading(false);
+    }
   };
 
   return (

@@ -8,25 +8,23 @@ import Footer from "../component/footer/Footer";
 const Home = () => {
   const [diseaseResult, setDiseaseResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
-  //! Post image data to backend
-  const handleCropImageUpload = async formData => {
-    setIsLoading(!isLoading);
-    try {
-      const data = await uploadCropImageService(formData);
-      console.log(data);
-      setDiseaseResult(data);
-      setIsLoading(!isLoading);
-    } catch (error) {
-      const errMsg = error.message || "something wents wrong.";
-      setError(errMsg);
-      toast.error(errMsg);
-      console.error("Error uploading image:", error);
-      setIsLoading(!isLoading);
-      return error;
-    }
-  };
+  // //! Post image data to backend
+  // const handleCropImageUpload = async formData => {
+  //   setIsLoading(!isLoading);
+  //   try {
+  //     const data = await uploadCropImageService(formData);
+  //     setDiseaseResult(data);
+  //     setIsLoading(!isLoading);
+  //   } catch (error) {
+  //     const errMsg = error.message || "something wents wrong.";
+  //     setError(errMsg);
+  //     toast.error(errMsg);
+  //     console.error("Error uploading image:", error);
+  //     setIsLoading(!isLoading);
+  //   }
+  // };
 
   const uploadAgainHandler = () => {
     setDiseaseResult(null);
@@ -37,7 +35,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div className="h-full">
+      <div className="min-h-[80vh]">
         {isLoading && !error && !diseaseResult && (
           <div className="py-4 text-xl font-semibold text-center">
             Loading...
@@ -50,8 +48,17 @@ const Home = () => {
             {...diseaseResult}
           />
         )}
+        {error && (
+          <div className="py-4 text-xl font-semibold text-center text-red-600">
+            {error}
+          </div>
+        )}
         {!diseaseResult && !isLoading && !error && (
-          <ImageUploadForm handleCropImageUpload={handleCropImageUpload} />
+          <ImageUploadForm
+            setLoading={setIsLoading}
+            setDiseaseResult={setDiseaseResult}
+            setError={setError}
+          />
         )}
       </div>
       <Footer />

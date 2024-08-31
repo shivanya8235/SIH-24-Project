@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "http://localhost:5000/CropDisease";
+export const BASEURL = "http://localhost:5000/CropDisease";
 
 export const uploadCropImageService = async formData => {
   try {
@@ -9,7 +9,7 @@ export const uploadCropImageService = async formData => {
     const data = res.data;
     return data;
   } catch (error) {
-    console.log(error);
+    console.log("Error", error);
     return error;
   }
 };
