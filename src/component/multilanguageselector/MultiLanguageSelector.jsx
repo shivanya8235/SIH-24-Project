@@ -35,8 +35,8 @@ const MultiLanguageSelector = () => {
     <div>
       <div>
         <select className="border border-gray-300 rounded-lg">
-          {languages.map((language) => (
-            <option>{language}</option>
+          {languages.map((language, idx) => (
+            <option key={idx}>{language}</option>
           ))}
         </select>
       </div>

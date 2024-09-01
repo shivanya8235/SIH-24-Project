@@ -8,11 +8,12 @@ const DiseaseResult = ({
   uploadAgainHanlder,
   error,
 }) => {
+  console.log(error);
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh]">
       <>
         {error ? (
-          <div>{error}</div>
+          <div className="py-4 text-lg font-semibold text-center">{error}</div>
         ) : (
           <>
             <div className="flex flex-col items-center justify-center gap-4 p-2">
